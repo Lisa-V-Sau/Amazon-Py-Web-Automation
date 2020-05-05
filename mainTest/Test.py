@@ -49,24 +49,24 @@ class Test_AMZN_Search(Test_AMZN_Search_Base):
         # assert that the search term indeed return some results.
         self.assertNotIn(TestData.NO_RESULTS_TEXT,self.searchResultsPage.driver.page_source)
     
-    # def test_user_should_be_able_to_add_item_to_cart(self):
-    #     self.homePage=HomePage(self.driver)
-    #     self.homePage.search()
-    #     self.searchResultsPage=SearchResultsPage(self.homePage.driver)
-    #     # click on the first search result
-    #     self.searchResultsPage.click_search_result()
-    #     # since the click on search result loads the product in new tab, switch to new tab
-    #     self.searchResultsPage.driver.switch_to.window(self.searchResultsPage.driver.window_handles[1])
-    #     # instantiate an object of Product Details Page class
-    #     self.productDetailsPage=ProductDetailsPage(self.searchResultsPage.driver)
-    #     # click on the Add To Cart button
-    #     self.productDetailsPage.click_add_to_cart_button()
-    #     # instantiate an object of Sub Cart Page class
-    #     self.subCartPage=SubCartPage(self.productDetailsPage.driver)
-    #     # assert if the sub cart page has indeed loaded
-    #     self.assertTrue(self.subCartPage.is_enabled(Locators.SUB_CART_DIV))
-    #     # assert if the product was added to the cart successfully
-    #     self.assertTrue(self.searchResultsPage.is_visible(Locators.PROCEED_TO_BUY_BUTTON))
+    def test_user_should_be_able_to_add_item_to_cart(self):
+        self.homePage=HomePage(self.driver)
+        self.homePage.search()
+        self.searchResultsPage=SearchResultsPage(self.homePage.driver)
+        # click on the first search result
+        self.searchResultsPage.click_search_result()
+        # since the click on search result loads the product in new tab, switch to new tab
+        self.searchResultsPage.driver.switch_to.window(self.searchResultsPage.driver.window_handles[1])
+        # instantiate an object of Product Details Page class
+        self.productDetailsPage=ProductDetailsPage(self.searchResultsPage.driver)
+        # click on the Add To Cart button
+        self.productDetailsPage.click_add_to_cart_button()
+        # instantiate an object of Sub Cart Page class
+        self.subCartPage=SubCartPage(self.productDetailsPage.driver)
+        # assert if the sub cart page has indeed loaded
+        self.assertTrue(self.subCartPage.is_enabled(Locators.SUB_CART_DIV))
+        # assert if the product was added to the cart successfully
+        self.assertTrue(self.searchResultsPage.is_visible(Locators.PROCEED_TO_BUY_BUTTON))
 
     def test_user_should_be_able_to_delete_item_from_cart(self):
         self.homePage=HomePage(self.driver)
@@ -88,26 +88,26 @@ class Test_AMZN_Search(Test_AMZN_Search_Base):
          #to assert the item was deleted successfully
         self.assertTrue(int(self.driver.find_element(*Locators.CART_COUNT).text) < cartCountBeforeDeletion) 
 
-    # def test_user_must_signin_to_checkout(self):
-    #     self.homePage=HomePage(self.driver)
-    #     self.homePage.search()
-    #     self.searchResultsPage=SearchResultsPage(self.homePage.driver)
-    #     self.searchResultsPage.click_search_result()
-    #     self.searchResultsPage.driver.switch_to_window(self.searchResultsPage.driver.window_handles[1])
-    #     self.productDetailsPage=ProductDetailsPage(self.searchResultsPage.driver)
-    #     self.productDetailsPage.click_add_to_cart_button()
-    #     self.subCartPage=SubCartPage(self.productDetailsPage.driver)
-    #     self.subCartPage.click_cart_link()
-    #     # instantiate an object of Cart Page class
-    #     self.cartPage=CartPage(self.subCartPage.driver)    
-    #     #click on Proceed to Checkout button
-    #     self.cartPage.click_proceed_to_checkout_button()
-    #     # instantiate an object of SignIn Page class
-    #     self.signInPage=SignInPage(self.cartPage.driver)
-    #     # to assert we are in indeed on Sign In Page, first we assert the title of the page
-    #     self.assertTrue(TestData.SIGN_IN_PAGE_TITLE,self.signInPage.driver.title)
-    #     # and then we assert for presence of email textbox on the page
-    #     self.assertTrue(self.signInPage.is_visible(Locators.USER_EMAIL_OR_MOBIL_NO_TEXTBOX))
+    def test_user_must_signin_to_checkout(self):
+        self.homePage=HomePage(self.driver)
+        self.homePage.search()
+        self.searchResultsPage=SearchResultsPage(self.homePage.driver)
+        self.searchResultsPage.click_search_result()
+        self.searchResultsPage.driver.switch_to_window(self.searchResultsPage.driver.window_handles[1])
+        self.productDetailsPage=ProductDetailsPage(self.searchResultsPage.driver)
+        self.productDetailsPage.click_add_to_cart_button()
+        self.subCartPage=SubCartPage(self.productDetailsPage.driver)
+        self.subCartPage.click_cart_link()
+        # instantiate an object of Cart Page class
+        self.cartPage=CartPage(self.subCartPage.driver)    
+        #click on Proceed to Checkout button
+        self.cartPage.click_proceed_to_checkout_button()
+        # instantiate an object of SignIn Page class
+        self.signInPage=SignInPage(self.cartPage.driver)
+        # to assert we are in indeed on Sign In Page, first we assert the title of the page
+        self.assertTrue(TestData.SIGN_IN_PAGE_TITLE,self.signInPage.driver.title)
+        # and then we assert for presence of email textbox on the page
+        self.assertTrue(self.signInPage.is_visible(Locators.USER_EMAIL_OR_MOBIL_NO_TEXTBOX))
 
 if __name__ == '__main__':
     unittest.main()
