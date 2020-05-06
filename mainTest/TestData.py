@@ -13,6 +13,5 @@ class TestData:
     SIGN_IN_PAGE_TITLE = "Amazon Sign In"
     LOG_IN_EMAIL = "lisasau85@gmail.com"
     HOME_PAGE_URL = "https://www.amazon.co.uk/?ref_=nav_signin&"
-    # Remember to remove login details when submitting to git.
 
 
